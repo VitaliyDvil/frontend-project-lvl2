@@ -5,6 +5,10 @@
   <a href="https://codeclimate.com/github/VitaliyDvil/frontend-project-lvl2/maintainability"><img src="https://api.codeclimate.com/v1/badges/2d470e615b93a189bff0/maintainability" /></a>
 </a>
 
+<a href="https://codeclimate.com/github/VitaliyDvil/frontend-project-lvl2">
+  <a href="https://codeclimate.com/github/VitaliyDvil/frontend-project-lvl2/test_coverage"><img src="https://api.codeclimate.com/v1/badges/2d470e615b93a189bff0/test_coverage" /></a>
+</a>
+
 ## Asciinema links:
 
 [gendiff](https://asciinema.org/a/MjhFtNMbvbgihgyLEoC5hCD4O) <!-- gendiff -->
