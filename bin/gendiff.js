@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
-const gendiff = require('../src/index.js');
-const program = require('commander');
+import program from 'commander';
+import gendiff from '../src/index.js';
 
 program.version('0.0.1');
 program.description('Compares two configuration files and shows a difference.');
@@ -13,3 +13,9 @@ program.action((filepath1, filepath2) => {
 });
 
 program.parse(process.argv);
+
+/*
+еслинт.СДЖС
+драй ран не работает
+"test": "npx -n --experimental-vm-modules jest"? or "jest" package.json
+*/
