@@ -1,5 +1,4 @@
-# Name of workflow
-name: Tests
+name: Node CI
 
 # Trigger the workflow on push or pull request
 on:
@@ -29,6 +28,10 @@ jobs:
         # The Node.js version to configure
         with:
           node-version: ${{ matrix.node-version }}
+      - name: npm install
+        # Install project
+        run: |
+          make install-deps
         # Add environment variables
         env:
           CI: true
@@ -42,7 +45,7 @@ jobs:
         uses: paambaati/codeclimate-action@v2.7.4
         # Add Code Climate secret key
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.TESTCOVERAGE }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: make test-coverage
           debug: true
