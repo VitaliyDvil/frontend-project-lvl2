@@ -7,7 +7,7 @@
     "node": ">=13"
   },
   "scripts": {
-    "test": "--experimental-vm-modules npx jest"
+    "test": "NODE_OPTIONS= --experimental-vm-modules npx jest"
   },
   "repository": {
     "type": "git",
