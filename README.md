@@ -13,7 +13,17 @@
 
 ## Asciinema links:
 
-[gendiff](https://asciinema.org/a/MjhFtNMbvbgihgyLEoC5hCD4O) <!-- gendiff -->
+```sh
+JSON format
+```
+[gendiff](https://asciinema.org/a/MjhFtNMbvbgihgyLEoC5hCD4O) <!-- gendiff json -->
+
+```sh
+YAML format
+```
+[gendiff](https://asciinema.org/a/MjhFtNMbvbgihgyLEoC5hCD4O) <!-- gendiff yml -->
+
+
 
 
 

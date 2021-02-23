@@ -1,23 +1,8 @@
-import fs from 'fs';
-import path from 'path';
-import _ from 'lodash'; 
-
-function getAbsoluteFilePath(filePath) {
-    const cwdPath =  process.cwd();
-    const absolutePath = path.resolve(cwdPath, filePath);
-    return absolutePath;
-}
-function getFileContent(absolutePath) {
-    const fileContent = fs.readFileSync(absolutePath, 'utf-8');
-    return fileContent;
-}
+import _ from 'lodash';
+import parseToObject from './parsers.js';
 
 function gendiff(filePath1, filePath2) {
-    const file1Content = getFileContent(getAbsoluteFilePath(filePath1));
-    const file2Content = getFileContent(getAbsoluteFilePath(filePath2));
-
-    const objFile1 = JSON.parse(file1Content);
-    const objFile2 = JSON.parse(file2Content);
+    const { objFile1, objFile2 } = parseToObject(filePath1, filePath2);
 
     const file1Keys = Object.keys(objFile1);
     const file2Keys = Object.keys(objFile2);

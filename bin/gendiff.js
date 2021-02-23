@@ -15,7 +15,5 @@ program.action((filepath1, filepath2) => {
 program.parse(process.argv);
 
 /*
-еслинт.СДЖС
-драй ран не работает
-"test": "npx -n --experimental-vm-modules jest"? or "jest" package.json
+in makefile npx?npm?
 */
