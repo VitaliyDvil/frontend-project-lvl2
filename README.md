@@ -16,12 +16,12 @@
 ```sh
 JSON format
 ```
-[gendiff](https://asciinema.org/a/MjhFtNMbvbgihgyLEoC5hCD4O) <!-- gendiff json -->
+[LINK](https://asciinema.org/a/MjhFtNMbvbgihgyLEoC5hCD4O) <!-- gendiff json -->
 
 ```sh
 YAML format
 ```
-[gendiff](https://asciinema.org/a/MjhFtNMbvbgihgyLEoC5hCD4O) <!-- gendiff yml -->
+[LINK](https://asciinema.org/a/MjhFtNMbvbgihgyLEoC5hCD4O) <!-- gendiff yml -->
 
 
 
