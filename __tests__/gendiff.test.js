@@ -221,4 +221,5 @@ test('gendiff change file', () => {
     const pathFileAfter = getFixturePath('file4.yml');
     const gendiffResult = gendiff(pathFileBefore, pathFileAfter, 'json');
     expect(gendiffResult).toMatch('"key":"setting3","status":"changed","value":null,"oldValue":true');
-  });  
+  });
+  

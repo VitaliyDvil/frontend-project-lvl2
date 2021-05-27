@@ -76,7 +76,3 @@ function format(diff) {
 }
 
 export default format;
-
-
-
-

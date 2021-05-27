@@ -42,7 +42,3 @@ function plain(diff, parentKeys = []) {
 }
   
 export default plain;
-
-
-
-
