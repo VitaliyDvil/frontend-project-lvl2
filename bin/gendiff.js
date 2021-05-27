@@ -1,21 +1,19 @@
 #! /usr/bin/env node
 
 import program from 'commander';
-//import gendiff from '../src/index.js';
-import gendiff from '../src/newIndex.js';
-
+import gendiff from '../src/index.js';
 
 program.version('0.0.1');
 program.description('Compares two configuration files and shows a difference.');
 program.arguments('<filepath1> <filepath2>');
-program.option('-f, --format [type]', 'output format');
+program.option('-f, --format [type]', 'output format', 'stylish');
 program.action((filepath1, filepath2) => {
-    const result = gendiff(filepath1, filepath2);
+    const result = gendiff(filepath1, filepath2, program.format);
     console.log(result);
 });
 
 program.parse(process.argv);
 
 /*
-in makefile npx?npm?
+1.снэпшот тесты демонстрация
 */
