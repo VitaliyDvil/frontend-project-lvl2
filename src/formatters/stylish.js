@@ -42,8 +42,12 @@ function format(diff) {
         }
     
         //changed
-        if (element.status === 'changed' && !_.isPlainObject(element.value)) {
-          if (_.isPlainObject(element.oldValue)) {
+        if (element.status === 'changed' && !element.children) {
+          if (_.isPlainObject(element.value)) {
+            acc += `${_.repeat('  ', indent)}- ${element.key}: ${element.oldValue}\n`;  
+            acc += `${_.repeat('  ', indent)}+ ${element.key}: ${openBracket}\n${converter(element.value, indent + 2)}${_.repeat('  ', indent + 1)}${closedBracket}\n`;
+          }
+          else if (_.isPlainObject(element.oldValue)) {
             acc += `${_.repeat('  ', indent)}- ${element.key}: ${openBracket}\n${converter(element.oldValue, indent + 2)}${_.repeat('  ', indent + 1)}${closedBracket}\n`;
             acc += `${_.repeat('  ', indent)}+ ${element.key}: ${element.value}\n`;  
           } else {
