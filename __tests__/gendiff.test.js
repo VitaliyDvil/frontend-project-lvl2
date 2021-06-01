@@ -109,7 +109,7 @@ test('gendiff add to file', () => {
     const pathFileBefore = getFixturePath('file1.json');
     const pathFileAfter = getFixturePath('file2.json');
     const gendiffResult = gendiff(pathFileBefore, pathFileAfter, 'plain');
-    expect(gendiffResult).toMatch('Property \'common.follow\' was added with value: \'false\'');
+    expect(gendiffResult).toMatch('Property \'common.follow\' was added with value: false');
   });
 
 test('gendiff add to file', () => {
@@ -146,7 +146,7 @@ test('gendiff add to file', () => {
     const pathFileBefore = getFixturePathYml('file3.yml');
     const pathFileAfter = getFixturePathYml('file4.yml');
     const gendiffResult = gendiff(pathFileBefore, pathFileAfter, 'plain');
-    expect(gendiffResult).toMatch('Property \'common.follow\' was added with value: \'false\'');
+    expect(gendiffResult).toMatch('Property \'common.follow\' was added with value: false');
   });
 
 test('gendiff add to file', () => {
