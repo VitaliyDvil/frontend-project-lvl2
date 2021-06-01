@@ -72,7 +72,7 @@ function format(diff) {
 
   const result = iter(diff, 1);
 
-  return `${openBracket}\n${result}\n${closedBracket}`
+  return `${openBracket}\n${result}${closedBracket}`
 }
 
 export default format;
