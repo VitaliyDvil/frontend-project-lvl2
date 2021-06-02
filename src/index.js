@@ -15,56 +15,56 @@ function makeDiff(prev, curr) {
 
       // new//
       if (_.has(curr, key) && !_.has(prev, key)) {
-        const info = { key, status: "new", value: currVal };
+        const info = { key, status: 'new', value: currVal };
         return [...acc, info];
       }
 
       // deleted//
       if (_.has(prev, key) && !_.has(curr, key)) {
-        const info = { key, status: "deleted", value: prevVal };
+        const info = { key, status: 'deleted', value: prevVal };
         return [...acc, info];
       }
 
       // unchanged//
       if (_.isPlainObject(prevVal) && _.isPlainObject(currVal)) {
-        const info = { key, status: "unchanged", children: makeDiff(prevVal, currVal) };
+        const info = { key, status: 'unchanged', children: makeDiff(prevVal, currVal) };
         return [...acc, info];
       }
       if (prevVal === currVal) {
-        const info = { key, status: "unchanged", value: currVal };
+        const info = { key, status: 'unchanged', value: currVal };
         return [...acc, info];
       }
 
       // changed//
       const info = {
         key,
-        status: "changed",
+        status: 'changed',
         value: currVal,
         oldValue: prevVal,
       };
       return [...acc, info];
     },
-    []
+    [],
   );
 
   return diff.sort(function(a, b) {
-      let keyA = a.key;
-      let keyB = b.key;
-      if (keyA < keyB) {
-        return -1;
-      } 
-      if (keyA > keyB) {
-        return 1;
-      }
-      return 0;
+    const keyA = a.key;
+    const keyB = b.key;
+    if (keyA < keyB) {
+      return -1;
+    } 
+    if (keyA > keyB) {
+      return 1;
     }
+    return 0;
+  },
   );
 }
 
 function gendiff(filePath1, filePath2, outputFormat = 'stylish') {
   const { objFile1, objFile2 } = parseToObject(filePath1, filePath2);
   const diff = makeDiff(objFile1, objFile2);
-  
+
   switch (outputFormat) {
     case ('plain'):
       return plain(diff);
