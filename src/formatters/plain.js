@@ -9,7 +9,6 @@ function plain(diff) {
     return _.reduce(
       diff,
       (acc, element) => {
-
         //  new
         if (element.status === 'new' && !_.isPlainObject(element.value)) {
           acc += `Property '${parentKeys.concat(element.key).join('.')}' was added with value: ${setBrackets(element.value)}\n`;
@@ -17,12 +16,10 @@ function plain(diff) {
         if (element.status === 'new' && _.isPlainObject(element.value)) {
           acc += `Property '${parentKeys.concat(element.key).join('.')}' was added with value: [complex value]\n`;
         }
-        
         //  deleted
         if (element.status === 'deleted') {
           acc += `Property '${parentKeys.concat(element.key).join('.')}' was removed\n`;
         }
-
         //  changed
         if (element.status === 'changed' && !element.children) {
           if (_.isPlainObject(element.value)) {
@@ -36,19 +33,16 @@ function plain(diff) {
         if (element.status === 'changed' && element.children) {
           acc += `${iter(element.children, parentKeys.concat(element.key))}`;
         }
-  
         //  unchanged
         if (element.status === 'unchanged' && element.children) {
           acc += `${iter(element.children, parentKeys.concat(element.key))}`;
         }
         return acc;
       },
-      ""
+      '',
     );
   };
-
   const result = iter(diff);
-
   return result.substring(0, result.length - 1);
 }
 
