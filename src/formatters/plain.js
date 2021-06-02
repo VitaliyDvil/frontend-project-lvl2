@@ -23,8 +23,11 @@ function plain(diff, parentKeys = []) {
       }
   
       //changed
-      if (element.status === 'changed' && !_.isPlainObject(element.value)) {
-        if (_.isPlainObject(element.oldValue)) {
+      if (element.status === 'changed' && !element.children) {
+        if (_.isPlainObject(element.value)) {
+          acc += `Property '${parentKeys.concat(element.key).join('.')}' was updated. From ${setBrackets(element.oldValue)} to [complex value]\n`;
+        }
+        else if (_.isPlainObject(element.oldValue)) {
           acc += `Property '${parentKeys.concat(element.key).join('.')}' was updated. From [complex value] to ${setBrackets(element.value)}\n`;
         } else {
           acc += `Property '${parentKeys.concat(element.key).join('.')}' was updated. From ${setBrackets(element.oldValue)} to ${setBrackets(element.value)}\n`;
