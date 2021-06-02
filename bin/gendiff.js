@@ -8,8 +8,8 @@ program.description('Compares two configuration files and shows a difference.');
 program.arguments('<filepath1> <filepath2>');
 program.option('-f, --format [type]', 'output format', 'stylish');
 program.action((filepath1, filepath2) => {
-    const result = gendiff(filepath1, filepath2, program.format);
-    console.log(result);
+  const result = gendiff(filepath1, filepath2, program.format);
+  console.log(result);
 });
 
 program.parse(process.argv);

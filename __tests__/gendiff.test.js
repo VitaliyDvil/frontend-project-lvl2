@@ -16,12 +16,12 @@ test('gendiff add to file', () => {
   expect(gendiffResult).toMatch('+ follow: false');
 });
 
-test('gendiff add to file', () => {
+test('gendiff add complex value to file', () => {
   const pathFileBefore = getFixturePath('file1.json');
   const pathFileAfter = getFixturePath('file2.json');
   const gendiffResult = gendiff(pathFileBefore, pathFileAfter);
   expect(gendiffResult).toMatch
-  +('+ group3: {\n        deep: {\n            id: {\n                number: 45\n            }\n        }\n        fee: 100500\n    }');
+  + ('+ group3: {\n        deep: {\n            id: {\n                number: 45\n            }\n        }\n        fee: 100500\n    }');
 });
 
 test('gendiff remove from file', () => {
@@ -31,7 +31,7 @@ test('gendiff remove from file', () => {
   expect(gendiffResult).toMatch('- setting2: 200');
 });
 
-test('gendiff remove from file', () => {
+test('gendiff remove complex value from file', () => {
   const pathFileBefore = getFixturePath('file1.json');
   const pathFileAfter = getFixturePath('file2.json');
   const gendiffResult = gendiff(pathFileBefore, pathFileAfter);
@@ -45,19 +45,19 @@ test('gendiff change file', () => {
   expect(gendiffResult).toMatch('- setting3: true', '+ setting3: null');
 });
 
-test('gendiff change file', () => {
+test('gendiff change complex value file', () => {
   const pathFileBefore = getFixturePath('file1.json');
   const pathFileAfter = getFixturePath('file2.json');
   const gendiffResult = gendiff(pathFileBefore, pathFileAfter);
   expect(gendiffResult).toMatch
-  +('group1: {\n      - baz: bas\n      + baz: bars\n        foo: bar\n      - nest: {\n            key: value\n        }\n      + nest: str\n    }');
-});  
+  + ('group1: {\n      - baz: bas\n      + baz: bars\n        foo: bar\n      - nest: {\n            key: value\n        }\n      + nest: str\n    }');
+});
 
-  //Tests default output for yml format//
+//  Tests default output for yml format//
 
-const _filenameYml = fileURLToPath(import.meta.url);
-const _dirnameYml = dirname(_filenameYml);
-const getFixturePathYml = (filenameYml) => path.join(_dirnameYml, '..', '__fixtures__', filenameYml);
+const filenameYml = fileURLToPath(import.meta.url);
+const dirnameYml = dirname(filenameYml);
+const getFixturePathYml = (filenameYml) => path.join(dirnameYml, '..', '__fixtures__', filenameYml);
 
 test('gendiff add to file', () => {
   const pathFileBefore = getFixturePathYml('file3.yml');
@@ -66,13 +66,13 @@ test('gendiff add to file', () => {
   expect(gendiffResult).toMatch('+ follow: false');
 });
 
-test('gendiff add to file', () => {
+test('gendiff add complex value to file', () => {
   const pathFileBefore = getFixturePath('file3.yml');
   const pathFileAfter = getFixturePath('file4.yml');
   const gendiffResult = gendiff(pathFileBefore, pathFileAfter);
   expect(gendiffResult).toMatch
-  +('+ group3: {\n        deep: {\n            id: {\n                number: 45\n            }\n        }\n        fee: 100500\n    }');
-}); 
+  + ('+ group3: {\n        deep: {\n            id: {\n                number: 45\n            }\n        }\n        fee: 100500\n    }');
+});
 
 test('gendiff remove from file', () => {
   const pathFileBefore = getFixturePathYml('file3.yml');
@@ -81,7 +81,7 @@ test('gendiff remove from file', () => {
   expect(gendiffResult).toMatch('- setting2: 200');
 });
 
-test('gendiff remove from file', () => {
+test('gendiff remove complex value from file', () => {
   const pathFileBefore = getFixturePath('file3.yml');
   const pathFileAfter = getFixturePath('file4.yml');
   const gendiffResult = gendiff(pathFileBefore, pathFileAfter);
@@ -95,15 +95,15 @@ test('gendiff change file', () => {
   expect(gendiffResult).toMatch('- setting3: true', '+ setting3: null');
 });
 
-test('gendiff change file', () => {
+test('gendiff change complex value file', () => {
   const pathFileBefore = getFixturePath('file3.yml');
   const pathFileAfter = getFixturePath('file4.yml');
   const gendiffResult = gendiff(pathFileBefore, pathFileAfter);
   expect(gendiffResult).toMatch
-  +('group1: {\n      - baz: bas\n      + baz: bars\n        foo: bar\n      - nest: {\n            key: value\n        }\n      + nest: str\n    }');
+  + ('group1: {\n      - baz: bas\n      + baz: bars\n        foo: bar\n      - nest: {\n            key: value\n        }\n      + nest: str\n    }');
 });
 
-    //Tests plain output for json format//
+//  Tests plain output for json format//
 
 test('gendiff add to file', () => {
   const pathFileBefore = getFixturePath('file1.json');
@@ -112,7 +112,7 @@ test('gendiff add to file', () => {
   expect(gendiffResult).toMatch('Property \'common.follow\' was added with value: false');
 });
 
-test('gendiff add to file', () => {
+test('gendiff add complex value to file', () => {
   const pathFileBefore = getFixturePath('file1.json');
   const pathFileAfter = getFixturePath('file2.json');
   const gendiffResult = gendiff(pathFileBefore, pathFileAfter, 'plain');
@@ -133,14 +133,14 @@ test('gendiff change file', () => {
   expect(gendiffResult).toMatch('Property \'common.setting6.doge.wow\' was updated. From \'\' to \'so much\'');
 });
 
-test('gendiff change file', () => {
+test('gendiff change complex value file', () => {
   const pathFileBefore = getFixturePath('file1.json');
   const pathFileAfter = getFixturePath('file2.json');
   const gendiffResult = gendiff(pathFileBefore, pathFileAfter, 'plain');
   expect(gendiffResult).toMatch('Property \'group1.nest\' was updated. From [complex value] to \'str\'');
 });
 
-  //Tests plain output for yml format//
+//  Tests plain output for yml format//
 
 test('gendiff add to file', () => {
   const pathFileBefore = getFixturePathYml('file3.yml');
@@ -149,12 +149,12 @@ test('gendiff add to file', () => {
   expect(gendiffResult).toMatch('Property \'common.follow\' was added with value: false');
 });
 
-test('gendiff add to file', () => {
+test('gendiff add complex value to file', () => {
   const pathFileBefore = getFixturePath('file3.yml');
   const pathFileAfter = getFixturePath('file4.yml');
   const gendiffResult = gendiff(pathFileBefore, pathFileAfter, 'plain');
   expect(gendiffResult).toMatch('Property \'common.setting5\' was added with value: [complex value]');
-}); 
+});
 
 test('gendiff remove from file', () => {
   const pathFileBefore = getFixturePathYml('file3.yml');
@@ -170,14 +170,14 @@ test('gendiff change file', () => {
   expect(gendiffResult).toMatch('Property \'common.setting6.doge.wow\' was updated. From \'\' to \'so much\'');
 });
 
-test('gendiff change file', () => {
+test('gendiff change complex value file', () => {
   const pathFileBefore = getFixturePath('file3.yml');
   const pathFileAfter = getFixturePath('file4.yml');
   const gendiffResult = gendiff(pathFileBefore, pathFileAfter, 'plain');
   expect(gendiffResult).toMatch('Property \'group1.nest\' was updated. From [complex value] to \'str\'');
 });
 
-  // Tests json output for json format//
+// Tests json output for json format//
 
 test('gendiff add to file', () => {
   const pathFileBefore = getFixturePath('file1.json');
@@ -200,7 +200,7 @@ test('gendiff change file', () => {
   expect(gendiffResult).toMatch('"key":"setting3","status":"changed","value":null,"oldValue":true');
 });
 
-  // Tests json output for yml format//
+// Tests json output for yml format//
 
 test('gendiff add to file', () => {
   const pathFileBefore = getFixturePathYml('file3.yml');

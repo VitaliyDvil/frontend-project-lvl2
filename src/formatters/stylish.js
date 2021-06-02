@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 const openBracket = '{';
 const closedBracket = '}';
@@ -7,19 +7,18 @@ function converter(data, indent = 1) {
   let result = '';
   const entries = Object.entries(data);
 
-  for (const [ key, value ] of entries) {
-      if (!_.isPlainObject(value)) {
-          result += `${_.repeat('  ', indent + 1)}${key}: ${value}\n`;
-      }
-      if (_.isPlainObject(value)){
-          result += `${_.repeat('  ', indent + 1)}${key}: ${openBracket}\n${converter(value, indent + 2)}  ${_.repeat('  ', indent)}${closedBracket}\n`;
-      }
+  for (const [key, value] of entries) {
+    if (!_.isPlainObject(value)) {
+        result += `${_.repeat('  ', indent + 1)}${key}: ${value}\n`;
+    }
+    if (_.isPlainObject(value)) {
+        result += `${_.repeat('  ', indent + 1)}${key}: ${openBracket}\n${converter(value, indent + 2)}  ${_.repeat('  ', indent)}${closedBracket}\n`;
+    }
   }
   return result;
 }
 
 function format(diff) {
-
   const iter = (diff, indent = 1) => {
     return _.reduce(
       diff,
