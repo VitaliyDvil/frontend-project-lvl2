@@ -47,18 +47,18 @@ function makeDiff(prev, curr) {
     [],
   );
 
-  return diff.sort(function(a, b) {
+  return diff.sort(function (a, b) {
     const keyA = a.key;
     const keyB = b.key;
     if (keyA < keyB) {
       return -1;
-    } 
+    }
     if (keyA > keyB) {
       return 1;
     }
     return 0;
   },
-  );
+);
 }
 
 function gendiff(filePath1, filePath2, outputFormat = 'stylish') {

@@ -40,7 +40,7 @@ function format(diff) {
         // changed//
         if (element.status === 'changed' && !element.children) {
           if (_.isPlainObject(element.value)) {
-            acc += `${_.repeat('  ', indent)}- ${element.key}: ${element.oldValue}\n`;  
+            acc += `${_.repeat('  ', indent)}- ${element.key}: ${element.oldValue}\n`;
             acc += `${_.repeat('  ', indent)}+ ${element.key}: ${openBracket}\n${converter(element.value, indent + 2)}${_.repeat('  ', indent + 1)}${closedBracket}\n`;
           } else if (_.isPlainObject(element.oldValue)) {
             acc += `${_.repeat('  ', indent)}- ${element.key}: ${openBracket}\n${converter(element.oldValue, indent + 2)}${_.repeat('  ', indent + 1)}${closedBracket}\n`;
@@ -60,12 +60,12 @@ function format(diff) {
         if (element.status === 'unchanged' && element.children) {
           acc += `  ${_.repeat('  ', indent)}${element.key}: ${openBracket}\n${iter(element.children, indent + 2)}  ${_.repeat('  ', indent)}${closedBracket}\n`;
         }
-    
+
         return acc;
       },
       '',
     );
-  }
+  };
 
   const result = iter(diff, 1);
 
