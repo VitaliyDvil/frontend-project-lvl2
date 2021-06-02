@@ -46,7 +46,7 @@ function makeDiff(prev, curr) {
     },
     [],
   );
-  return _.sortBy(diff,'key');
+  return _.sortBy(diff, 'key');
 }
 
 function gendiff(filePath1, filePath2, outputFormat = 'stylish') {

@@ -4,18 +4,20 @@ const openBracket = '{';
 const closedBracket = '}';
 
 function converter(data, indent = 1) {
-  let result = '';
   const entries = Object.entries(data);
-
-  for (const [key, value] of entries) {
-    if (!_.isPlainObject(value)) {
-      result += `${_.repeat('  ', indent + 1)}${key}: ${value}\n`;
-    }
-    if (_.isPlainObject(value)) {
-      result += `${_.repeat('  ', indent + 1)}${key}: ${openBracket}\n${converter(value, indent + 2)}  ${_.repeat('  ', indent)}${closedBracket}\n`;
-    }
-  }
-  return result;
+  return _.reduce(
+    entries,
+    (acc, [key, value]) => {
+      if (!_.isPlainObject(value)) {
+        acc += `${_.repeat('  ', indent + 1)}${key}: ${value}\n`;
+      }
+      if (_.isPlainObject(value)) {
+        acc += `${_.repeat('  ', indent + 1)}${key}: ${openBracket}\n${converter(value, indent + 2)}  ${_.repeat('  ', indent)}${closedBracket}\n`;
+      }
+      return acc;
+    },
+    '',
+  );
 }
 
 function format(diff) {
