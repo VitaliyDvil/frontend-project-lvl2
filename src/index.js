@@ -1,22 +1,8 @@
-import _ from "lodash";
-import parseToObject from "./parsers.js";
-import format from "./formatters/stylish.js";
-import plain from "./formatters/plain.js"
-import json from "./formatters/json.js";
-
-function gendiff(filePath1, filePath2, outputFormat = 'stylish') {
-  const { objFile1, objFile2 } = parseToObject(filePath1, filePath2);
-  const diff = makeDiff(objFile1, objFile2);
-  
-  switch(outputFormat) {
-    case('plain'):
-      return plain(diff);
-    case('json'):
-      return json(diff);
-    default:
-      return format(diff);
-  }
-}
+import _ from 'lodash';
+import parseToObject from './parsers.js';
+import format from './formatters/stylish.js';
+import plain from './formatters/plain.js';
+import json from './formatters/json.js';
 
 function makeDiff(prev, curr) {
   const keys = _.union(_.keys(prev), _.keys(curr));
@@ -27,19 +13,19 @@ function makeDiff(prev, curr) {
       const prevVal = prev[key];
       const currVal = curr[key];
 
-      // "new"
+      // new//
       if (_.has(curr, key) && !_.has(prev, key)) {
         const info = { key, status: "new", value: currVal };
         return [...acc, info];
       }
 
-      // "deleted"
+      // deleted//
       if (_.has(prev, key) && !_.has(curr, key)) {
         const info = { key, status: "deleted", value: prevVal };
         return [...acc, info];
       }
 
-      // "unchanged"
+      // unchanged//
       if (_.isPlainObject(prevVal) && _.isPlainObject(currVal)) {
         const info = { key, status: "unchanged", children: makeDiff(prevVal, currVal) };
         return [...acc, info];
@@ -49,7 +35,7 @@ function makeDiff(prev, curr) {
         return [...acc, info];
       }
 
-      // "changed"
+      // changed//
       const info = {
         key,
         status: "changed",
@@ -73,6 +59,20 @@ function makeDiff(prev, curr) {
       return 0;
     }
   );
+}
+
+function gendiff(filePath1, filePath2, outputFormat = 'stylish') {
+  const { objFile1, objFile2 } = parseToObject(filePath1, filePath2);
+  const diff = makeDiff(objFile1, objFile2);
+  
+  switch (outputFormat) {
+    case ('plain'):
+      return plain(diff);
+    case ('json'):
+      return json(diff);
+    default:
+      return format(diff);
+  }
 }
 
 export default gendiff;
