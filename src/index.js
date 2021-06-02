@@ -46,19 +46,7 @@ function makeDiff(prev, curr) {
     },
     [],
   );
-
-  return diff.sort(function (a, b) {
-    const keyA = a.key;
-    const keyB = b.key;
-    if (keyA < keyB) {
-      return -1;
-    }
-    if (keyA > keyB) {
-      return 1;
-    }
-    return 0;
-  },
-);
+  return _.sortBy(diff,'key');
 }
 
 function gendiff(filePath1, filePath2, outputFormat = 'stylish') {
