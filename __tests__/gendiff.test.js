@@ -18,8 +18,8 @@ test('gendiff add to file default output', () => {
 test('gendiff add complex value to file default output', () => {
   const pathFileBefore = getFixturePath('file1.json');
   const pathFileAfter = getFixturePath('file2.json');
-  expect(gendiff(pathFileBefore, pathFileAfter)).toMatch
-  + ('+ group3: {\n        deep: {\n            id: {\n                number: 45\n            }\n        }\n        fee: 100500\n    }');
+  const template = '+ group3: {\n        deep: {\n            id: {\n                number: 45\n            }\n        }\n        fee: 100500\n    }';
+  expect(gendiff(pathFileBefore, pathFileAfter)).toMatch(template);
 });
 
 test('gendiff remove from file default output', () => {
