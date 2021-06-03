@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
-// import path from 'path';
-import { path, dirname } from 'path';
+import * as path from 'path';
+import { dirname } from 'path';
 import gendiff from '../src/index.js';
 
 // Tests default output for json format//
