@@ -43,8 +43,8 @@ test('gendiff change file default output', () => {
 test('gendiff change complex value file default output', () => {
   const pathFileBefore = getFixturePath('file1.json');
   const pathFileAfter = getFixturePath('file2.json');
-  expect(gendiff(pathFileBefore, pathFileAfter)).toMatch
-  + ('group1: {\n      - baz: bas\n      + baz: bars\n        foo: bar\n      - nest: {\n            key: value\n        }\n      + nest: str\n    }');
+  const template = 'group1: {\n      - baz: bas\n      + baz: bars\n        foo: bar\n      - nest: {\n            key: value\n        }\n      + nest: str\n    }';
+  expect(gendiff(pathFileBefore, pathFileAfter)).toMatch(template);
 });
 
 //  Tests default output for yml format//
@@ -62,8 +62,8 @@ test('gendiff add to file default output for yml format', () => {
 test('gendiff add a complex value to file default output for yml format', () => {
   const pathFileBefore = getFixturePath('file3.yml');
   const pathFileAfter = getFixturePath('file4.yml');
-  expect(gendiff(pathFileBefore, pathFileAfter)).toMatch
-  + ('+ group3: {\n        deep: {\n            id: {\n                number: 45\n            }\n        }\n        fee: 100500\n    }');
+  const template = '+ group3: {\n        deep: {\n            id: {\n                number: 45\n            }\n        }\n        fee: 100500\n    }';
+  expect(gendiff(pathFileBefore, pathFileAfter)).toMatch(template);
 });
 
 test('gendiff remove from file default output for yml format', () => {
@@ -87,8 +87,8 @@ test('gendiff change file default output for yml format', () => {
 test('gendiff change a complex value file default output for yml format', () => {
   const pathFileBefore = getFixturePath('file3.yml');
   const pathFileAfter = getFixturePath('file4.yml');
-  expect(gendiff(pathFileBefore, pathFileAfter)).toMatch
-  + ('group1: {\n      - baz: bas\n      + baz: bars\n        foo: bar\n      - nest: {\n            key: value\n        }\n      + nest: str\n    }');
+  const template = 'group1: {\n      - baz: bas\n      + baz: bars\n        foo: bar\n      - nest: {\n            key: value\n        }\n      + nest: str\n    }';
+  expect(gendiff(pathFileBefore, pathFileAfter)).toMatch(template);
 });
 
 //  Tests plain output for json format//
