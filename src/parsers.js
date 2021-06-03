@@ -19,8 +19,7 @@ function parseToObject(filePath1, filePath2) {
     const objFile1 = JSON.parse(file1Content);
     const objFile2 = JSON.parse(file2Content);
     return { objFile1, objFile2 };
-  }
-  if (path.extname(filePath1) === '.yml') {
+  } else {
     const file1Content = getFileContent(getAbsoluteFilePath(filePath1));
     const file2Content = getFileContent(getAbsoluteFilePath(filePath2));
     const objFile1 = yaml.load(file1Content);
