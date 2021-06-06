@@ -45,6 +45,3 @@ function plain(diff) {
 }
 
 export default plain;
-
-const arr = [];
-arr.push(123);
