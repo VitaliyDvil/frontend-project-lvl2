@@ -5,8 +5,8 @@ function setBrackets(element) {
 }
 
 function plain(diff) {
-  const iter = (diff, parentKeys = []) => {
-    return _.reduce(
+  const iter = (diff, parentKeys = []) => 
+    _.reduce(
       diff,
       (acc, element) => {
         //  new
@@ -41,9 +41,11 @@ function plain(diff) {
       },
       '',
     );
-  };
   const result = iter(diff);
   return result.substring(0, result.length - 1);
 }
 
 export default plain;
+
+const arr = [];
+arr.push(123);

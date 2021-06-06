@@ -51,7 +51,7 @@ test('gendiff change complex value file default output', () => {
 
 const filenameYml = fileURLToPath(import.meta.url);
 const dirnameYml = dirname(filenameYml);
-const getFixturePathYml = (filenameYml) => path.join(dirnameYml, '..', '__fixtures__', filenameYml);
+const getFixturePathYml = (filename) => path.join(dirnameYml, '..', '__fixtures__', filename);
 
 test('gendiff add to file default output for yml format', () => {
   const pathFileBefore = getFixturePathYml('file3.yml');
